@@ -65,6 +65,11 @@ dependencies {
     implementation 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.projectlombok:lombok'
+    // 스프링 부트용 spring data jpa 추상화 라이브러리. 부트 버전에 맞춰 자동으로 jpa 관련 라이브러리 버전 관리해줌.
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    // h2: 인메모리 관계형 데이터베이스. 별도의 설치 없이 프로젝트 의존성만으로 관리 가능.
+    //   메모리에서 실행 >> 애플리케이션 재시작할때마다 초기화됨 >> 주로 테스트용도로 사용
+    implementation('com.h2database:h2')
 
 }
 configurations {
