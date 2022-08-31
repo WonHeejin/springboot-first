@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Posts {
     @Id //해당 테이블의 PK필드
     //스프링부트 2.0에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto_increment가 됨.
-    // auto_increment : 값이 삽입될때마다 1씩 증가시켜줌. mybatis - auto_increment == oracle - sequence
+    // auto_increment : 값이 삽입될때마다 1씩 증가시켜줌. mysql - auto_increment == oracle - sequence
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

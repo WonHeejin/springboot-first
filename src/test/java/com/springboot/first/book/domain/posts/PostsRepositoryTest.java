@@ -31,7 +31,7 @@ public class PostsRepositoryTest {
         String title ="테스트 게시글";
         String content="테스트 본문";
 
-        postsRepository.save(Posts.builder()   //테이블 posts에 id값이 있다면 update, 없다면 insert 쿼리 실행
+        postsRepository.save(Posts.builder()   //id값이 있다면 테이블 posts에 update, 없다면 insert 쿼리 실행
                 .title(title)
                 .content(content)
                 .author("youth772@naver.com")
