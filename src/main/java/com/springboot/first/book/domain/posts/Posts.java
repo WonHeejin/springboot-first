@@ -34,6 +34,11 @@ public class Posts {
         this.content = content;
         this.author = author;
     }
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
 /*-----기본적인 구조-----
 * setter를 사용하지 않고 생성자를 통해서 값을 채운 후 DB에 삽입
