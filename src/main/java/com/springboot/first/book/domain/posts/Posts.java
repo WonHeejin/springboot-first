@@ -1,5 +1,6 @@
 package com.springboot.first.book.domain.posts;
 
+import com.springboot.first.book.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 /*테이블과 링크될 클래스임을 나타냄. 기본값으로 클래스의 카멜케이스 이름을 언더스코어 네이밍(_)으로 테이블 이름을 매칭함.
 * ex)SalesManager.java > sales_manager table*/
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id //해당 테이블의 PK필드
     //스프링부트 2.0에서는 GenerationType.IDENTITY 옵션을 추가해야만 auto_increment가 됨.
     // auto_increment : 값이 삽입될때마다 1씩 증가시켜줌. mysql - auto_increment == oracle - sequence
