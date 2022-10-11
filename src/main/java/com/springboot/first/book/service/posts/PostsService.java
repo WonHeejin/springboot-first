@@ -2,12 +2,16 @@ package com.springboot.first.book.service.posts;
 
 import com.springboot.first.book.domain.posts.Posts;
 import com.springboot.first.book.domain.posts.PostsRepository;
+import com.springboot.first.book.web.dto.PostsListResponseDto;
 import com.springboot.first.book.web.dto.PostsResponseDto;
 import com.springboot.first.book.web.dto.PostsSaveRequestDto;
 import com.springboot.first.book.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
@@ -39,5 +43,13 @@ public class PostsService {
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        //postsRepository 결과로 넘어온 Posts의 Stream을 map을 통해 PostsListResponseDto로 변환 -> Lists로 변환
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)// .map(posts -> new PostsListResponseDto(posts))와 동일
+                .collect(Collectors.toList());
     }
 }
