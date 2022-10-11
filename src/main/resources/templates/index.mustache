@@ -3,7 +3,7 @@
 <div class="col-md-12">
     <div class="row">
         <div class="col-md-6">
-            <a href="/post/save" role="button" class="btn btn-primary">글 등록</a>
+            <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
         </div>
     </div>
     <br>
@@ -21,7 +21,7 @@
         {{#posts}} <!--posts라는 List를 순회함. java의 for문과 동일-->
             <tr>
                 <td>{{id}}</td> <!--List에서 뽑아낸 개체의 필드를 사용-->
-                <td>{{title}}</td>
+                <td><a href="/posts/update/{{id}}">{{title}}</a></td>
                 <td>{{author}}</td>
                 <td>{{modifiedDate}}</td>
             </tr>
