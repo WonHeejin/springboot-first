@@ -1,5 +1,6 @@
 package com.springboot.first.book.web;
 
+import com.springboot.first.book.config.auth.dto.SessionUser;
 import com.springboot.first.book.service.posts.PostsService;
 import com.springboot.first.book.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
@@ -16,9 +19,16 @@ public class IndexController {
     //뒤의 파일 확장자: .mustache
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
+
     @GetMapping("/")
     public String index(Model model){
         model.addAttribute("posts", postsService.findAllDesc());
+        //로그인 성공 시 세션에 user가 저장되어 있음
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
 
