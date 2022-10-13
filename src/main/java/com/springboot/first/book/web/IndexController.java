@@ -1,5 +1,6 @@
 package com.springboot.first.book.web;
 
+import com.springboot.first.book.config.auth.LoginUser;
 import com.springboot.first.book.config.auth.dto.SessionUser;
 import com.springboot.first.book.service.posts.PostsService;
 import com.springboot.first.book.web.dto.PostsResponseDto;
@@ -19,13 +20,11 @@ public class IndexController {
     //뒤의 파일 확장자: .mustache
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
-        //로그인 성공 시 세션에 user가 저장되어 있음
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        //@LoginUser로 세션에서 유저값 받아옴
         if (user != null) {
             model.addAttribute("userName", user.getName());
         }
