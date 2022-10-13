@@ -13,7 +13,9 @@
             {{^userName}} <!--userName이 없다면 노출-->
                 <!--"/oauth2/authorization/google" : 스프링 시큐리티에서 기본적으로 제공하는 로그인 url 따로 만들필요x-->
                 <a href="/oauth2/authorization/google"
-                   class="btn btn-success active" role="button">Google Login</a>
+                   class="btn btn-secondary active" role="button">Google Login</a>
+                <a href="/oauth2/authorization/naver"
+                   class="btn btn-success active" role="button">Naver Login</a>
             {{/userName}}
         </div>
     </div>
