@@ -35,7 +35,7 @@ public class PostsRepositoryTest {
         postsRepository.save(Posts.builder()   //id값이 있다면 테이블 posts에 update, 없다면 insert 쿼리 실행
                 .title(title)
                 .content(content)
-                .author("youth772@naver.com")
+                .author("1234@naver.com")
                 .build());
 
         //when
